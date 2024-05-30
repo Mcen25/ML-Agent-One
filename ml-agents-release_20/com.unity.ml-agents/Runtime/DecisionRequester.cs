@@ -19,7 +19,6 @@ namespace Unity.MLAgents
     /// </remarks>
     [AddComponentMenu("ML Agents/Decision Requester", (int)MenuGroup.Default)]
     [RequireComponent(typeof(Agent))]
-    [DefaultExecutionOrder(-10)]
     public class DecisionRequester : MonoBehaviour
     {
         /// <summary>
