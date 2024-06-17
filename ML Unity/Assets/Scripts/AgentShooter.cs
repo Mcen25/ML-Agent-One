@@ -7,6 +7,8 @@ using Unity.MLAgents.Actuators;
 
 public class AgentShooter : Agent
 {
+
+    public Transform shootingPoint;
     public override void OnEpisodeBegin()
     {
         
@@ -27,7 +29,14 @@ public class AgentShooter : Agent
         base.Heuristic(actionsOut);
     }
 
-    private void Shoot() {
-        
+    private void Shoot(Vector3 direction) {
+        int layerMask = 1 << LayerMask.NameToLayer("Target");
+
+        if (Physics.Raycast(shootingPoint.position, shootingPoint.forward, out RaycastHit hit, Mathf.Infinity, layerMask)) {
+            Target target = hit.collider.GetComponent<Target>();
+            if (target != null) {
+                target.TakeDamage(10);
+            }
+        }
     }
 } 
