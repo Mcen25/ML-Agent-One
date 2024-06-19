@@ -23,7 +23,7 @@ public class Target : MonoBehaviour
         Die();
     }
 
-    private void ApplyDamage(int damage) {
+    public void ApplyDamage(int damage) {
         // Apply damage to the target
         health -= damage;
         if (health <= 0) {
